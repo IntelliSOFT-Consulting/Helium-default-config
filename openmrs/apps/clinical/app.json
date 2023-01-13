@@ -27,6 +27,8 @@
         "enableRadiologyOrderOptions":["Urgent","NeedsPrint"],
         "enableLabOrderOptions":["Urgent", "NeedsPrint"],
         "quickPrints":false,
+        "allowAdhocTeleConsultation": false,
+        "teleConsultationDomain": "meet.jit.si",
         "networkConnectivity" : {
             "showNetworkStatusMessage": false,
             "networkStatusCheckInterval": 20000,

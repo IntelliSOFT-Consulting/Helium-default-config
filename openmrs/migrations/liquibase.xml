@@ -86,4 +86,7 @@
         </sql>
     </changeSet>
     <include file ="addObsPathSplitterProperty.xml"/>
+    <include file ="addMoreObsSplitterProperty.xml"/>
+    <include file ="addMultiSelectObsSplitterProperty.xml"/>
+    <include file ="addLabRoleWithPrivilege.xml"/>
 </databaseChangeLog>
