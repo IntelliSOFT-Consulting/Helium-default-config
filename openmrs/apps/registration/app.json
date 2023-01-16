@@ -28,25 +28,48 @@
             "patientInformation": {
                 "additionalPatientInformation": {
                     "title": "Additional Patient Information",
+                    "translationKey": "REGISTRATION_PATIENT_APPOINTMENT_INFO",
                     "attributes": [
-                        "distanceFromCenter",
-                        "isUrban",
-                        "cluster",
-                        "RationCard",
-                        "familyIncome",
-                        "debt",
-                        "cluster",
-                        "email"
-                    ]
+                        "email",
+                        "patientPhoneNumber"
+                    ],
+                    "expand": true,
+					"order": 2
+                },
+                "registerNewPatient1": {
+                    "title": "Next Of Kin Information",
+                    "translationKey": "REGISTRATION_NEXT_OF_KIN_INFORMATION",
+                    "attributes": [
+						"nextOfKinNames",
+                        "nextOfKinRelationship",
+                        "nextOfKinPhoneNumber",
+                        "nextOfKinEmail",
+                        "nextOfKinLocationDetails"
+                        
+                    ],
+					"expand": true,
+					"order": 3
+                },
+                "patientPaymentRegistration": {
+                    "title": "Payment Information",
+                    "translationKey": "REGISTRATION_PAYMENT_INFORMATION",
+                    "attributes": [
+						"sponsorShipType",
+                        "sponsorShipCompany"
+                        
+                    ],
+					"expand": true,
+					"order": 4
                 },
                 "hidden": {
                     "attributes": [
                         "primaryContact"
+                        
                     ]
                 },
                 "defaults":  {
                     "class": "General",
-                    "landHolding": 2
+                    "landHolding": 3
                 }
             },
             "addressHierarchy": {
@@ -67,7 +90,7 @@
             "isLastNameMandatory": true,
             "patientNameDisplayOrder": ["firstName", "middleName", "lastName"],
             "showSaveConfirmDialog": false,
-            "showBirthTime": true,
+            "showBirthTime": false,
             "showCasteSameAsLastNameCheckbox": false,
             "printOptions": [
                 {
