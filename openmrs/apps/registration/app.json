@@ -1,146 +1,172 @@
 {
-        "id": "bahmni.registration",
-        "instanceOf":"bahmni.template.registration",
-        "description": "Bahmni Patient Registration App",
-        "extensionPoints": [
+    "id": "bahmni.registration",
+    "instanceOf": "bahmni.template.registration",
+    "description": "Bahmni Patient Registration App",
+    "extensionPoints": [
+        {
+            "id": "org.bahmni.registration.patient.search.result.action",
+            "description": "Bahmni Patient Search Result Action"
+        },
+        {
+            "id": "org.bahmni.registration.patient.next",
+            "description": "After Bahmni Patient Registration, forward url configuration"
+        },
+        {
+            "id": "org.bahmni.registration.navigation",
+            "description": "Navigation within regsitration first and second page"
+        },
+        {
+            "id": "org.bahmni.registration.conceptSetGroup.observations",
+            "description": "Registration Second Page Forms"
+        }
+    ],
+    "contextModel": [
+        "patientUuid",
+        "activeVisitUuid"
+    ],
+    "config": {
+        "patientInformation": {
+            "additionalPatientInformation": {
+                "title": "Additional Patient Information",
+                "translationKey": "REGISTRATION_PATIENT_APPOINTMENT_INFO",
+                "attributes": [
+                    "email",
+                    "patientPhoneNumber"
+                ],
+                "expand": true,
+                "order": 2
+            },
+            "registerNewPatient1": {
+                "title": "Next Of Kin Information",
+                "translationKey": "REGISTRATION_NEXT_OF_KIN_INFORMATION",
+                "attributes": [
+                    "nextOfKinNames",
+                    "nextOfKinRelationship",
+                    "nextOfKinPhoneNumber",
+                    "nextOfKinEmail",
+                    "nextOfKinLocationDetails"
+                ],
+                "expand": true,
+                "order": 3
+            },
+            "patientPaymentRegistration": {
+                "title": "Payment Information",
+                "translationKey": "REGISTRATION_PAYMENT_INFORMATION",
+                "attributes": [
+                    "sponsorShipType",
+                    "sponsorShipCompany"
+                ],
+                "expand": true,
+                "order": 4
+            },
+            "hidden": {
+                "attributes": [
+                    "primaryContact"
+                ]
+            },
+            "defaults": {
+                "class": "General",
+                "landHolding": 3
+            }
+        },
+        "addressHierarchy": {
+            "showAddressFieldsTopDown": false,
+            "strictAutocompleteFromLevel": "stateProvince"
+        },
+        "relationshipTypeMap": {
+            "Doctor": "provider",
+            "Parent": "patient"
+        },
+        "autoCompleteFields": [
+            "familyName",
+            "caste"
+        ],
+        "defaultIdentifierPrefix": "GAN",
+        "defaultVisitType": "OPD",
+        "searchByIdForwardUrl": "/patient/{{patientUuid}}",
+        "showMiddleName": true,
+        "showLastName": true,
+        "isLastNameMandatory": true,
+        "patientNameDisplayOrder": [
+            "firstName",
+            "middleName",
+            "lastName"
+        ],
+        "showSaveConfirmDialog": false,
+        "showBirthTime": false,
+        "showCasteSameAsLastNameCheckbox": false,
+        "printOptions": [
             {
-                "id": "org.bahmni.registration.patient.search.result.action",
-                "description": "Bahmni Patient Search Result Action"
+                "translationKey": "REGISTRATION_PRINT_REG_CARD_LOCAL_KEY",
+                "templateUrl": "/bahmni_config/openmrs/apps/registration/registrationCardLayout/print_local.html",
+                "shortcutKey": "l"
             },
             {
-                "id": "org.bahmni.registration.patient.next",
-                "description": "After Bahmni Patient Registration, forward url configuration"
+                "translationKey": "REGISTRATION_PRINT_REG_CARD_KEY",
+                "templateUrl": "/bahmni_config/openmrs/apps/registration/registrationCardLayout/print.html",
+                "shortcutKey": "p"
             },
             {
-                "id": "org.bahmni.registration.navigation",
-                "description": "Navigation within regsitration first and second page"
+                "translationKey": "REGISTRATION_PRINT_SUPPLEMENTAL_PAPER",
+                "templateUrl": "/bahmni_config/openmrs/apps/registration/supplementalPaperLayout/print.html",
+                "shortcutKey": "r"
             },
             {
-                "id": "org.bahmni.registration.conceptSetGroup.observations",
-                "description": "Registration Second Page Forms"
+                "translationKey": "REGISTRATION_PRINT_WITH_BARCODE",
+                "templateUrl": "/bahmni_config/openmrs/apps/registration/registrationCardLayout/printWithBarcode.html",
+                "shortcutKey": "c"
             }
         ],
-        "contextModel": [
-            "patientUuid",
-            "activeVisitUuid"
-        ],
-        "config" : {
-            "patientInformation": {
-                "additionalPatientInformation": {
-                    "title": "Additional Patient Information",
-                    "translationKey": "REGISTRATION_PATIENT_APPOINTMENT_INFO",
-                    "attributes": [
-                        "email",
-                        "patientPhoneNumber"
-                    ],
-                    "expand": true,
-					"order": 2
-                },
-                "registerNewPatient1": {
-                    "title": "Next Of Kin Information",
-                    "translationKey": "REGISTRATION_NEXT_OF_KIN_INFORMATION",
-                    "attributes": [
-						"nextOfKinNames",
-                        "nextOfKinRelationship",
-                        "nextOfKinPhoneNumber",
-                        "nextOfKinEmail",
-                        "nextOfKinLocationDetails"
-                        
-                    ],
-					"expand": true,
-					"order": 3
-                },
-                "patientPaymentRegistration": {
-                    "title": "Payment Information",
-                    "translationKey": "REGISTRATION_PAYMENT_INFORMATION",
-                    "attributes": [
-						"sponsorShipType",
-                        "sponsorShipCompany"
-                        
-                    ],
-					"expand": true,
-					"order": 4
-                },
-                "hidden": {
-                    "attributes": [
-                        "primaryContact"
-                        
-                    ]
-                },
-                "defaults":  {
-                    "class": "General",
-                    "landHolding": 3
-                }
+        "conceptSetUI": {
+            "REGISTRATION FEES": {
+                "required": true,
+                "label": "Fee"
             },
-            "addressHierarchy": {
-                "showAddressFieldsTopDown": false,
-                "strictAutocompleteFromLevel": "stateProvince"
+            "FHS": {
+                "buttonSelect": true
             },
-            "relationshipTypeMap": {
-                "Doctor":"provider",
-                "Parent":"patient"
+            "defaults": {
+                "FHS": "Present"
+            }
+        },
+        "fieldValidation": {
+            "email": {
+                "pattern": "^(?=.{1,40}$)(([^<>()\\[\\]\\\\.,;:\\s@\"]+(\\.[^<>()\\[\\]\\\\.,;:\\s@\"]+)*)|(\".+\"))@(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,4})$",
+                "errorMessage": "Should be a valid email address"
             },
-
-            "autoCompleteFields":["familyName", "caste"],
-            "defaultIdentifierPrefix": "GAN",
-            "defaultVisitType": "OPD",
-            "searchByIdForwardUrl": "/patient/{{patientUuid}}",
-            "showMiddleName": true,
-            "showLastName": true,
-            "isLastNameMandatory": true,
-            "patientNameDisplayOrder": ["firstName", "middleName", "lastName"],
-            "showSaveConfirmDialog": false,
-            "showBirthTime": false,
-            "showCasteSameAsLastNameCheckbox": false,
-            "printOptions": [
-                {
-                    "translationKey": "REGISTRATION_PRINT_REG_CARD_LOCAL_KEY",
-                    "templateUrl": "/bahmni_config/openmrs/apps/registration/registrationCardLayout/print_local.html",
-                    "shortcutKey": "l"
-                },
-                {
-                    "translationKey": "REGISTRATION_PRINT_REG_CARD_KEY",
-                    "templateUrl": "/bahmni_config/openmrs/apps/registration/registrationCardLayout/print.html",
-                    "shortcutKey": "p"
-                },
-                {
-                    "translationKey": "REGISTRATION_PRINT_SUPPLEMENTAL_PAPER",
-                    "templateUrl": "/bahmni_config/openmrs/apps/registration/supplementalPaperLayout/print.html",
-                    "shortcutKey": "r"
-                },
-                {
-                    "translationKey": "REGISTRATION_PRINT_WITH_BARCODE",
-                    "templateUrl": "/bahmni_config/openmrs/apps/registration/registrationCardLayout/printWithBarcode.html",
-                    "shortcutKey": "c"
-                }
-            ],
-            "conceptSetUI": {
-                "REGISTRATION FEES": {
-                    "required": true,
-                    "label": "Fee"
-                },
-                "FHS": {
-                    "buttonSelect": true
-                },
-                "defaults":{
-                    "FHS": "Present"
-                }
+            "primaryContact": {
+                "pattern": "[0-9]{8,10}",
+                "errorMessage": "Should be 12 characters starting with 91 (country code)"
             },
-            "fieldValidation" : {
-                "email" : {"pattern" : "^(?=.{1,40}$)(([^<>()\\[\\]\\\\.,;:\\s@\"]+(\\.[^<>()\\[\\]\\\\.,;:\\s@\"]+)*)|(\".+\"))@(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,4})$", "errorMessage" : "Should be a valid email address"},
-                "primaryContact" : {"pattern" : "[0-9]{8,10}", "errorMessage" : "Should be 12 characters starting with 91 (country code)"},
-                "landHolding" : {"pattern" : "[0-9]{0,3}", "errorMessage" : "Should be between 1 to 999 acres"},
-                "familyName" : {"pattern" : "[a-zA-Z]{0,}", "errorMessage" : "Should contain characters"},
-                "givenName" : {"pattern" : "[a-zA-Z]{0,}", "errorMessage" : "Should contain characters"},
-                "middleName" : {"pattern" : "[a-zA-Z]{0,}", "errorMessage" : "Should contain characters"},
-                "address1" : {"pattern" : "[a-zA-Z0-9\\s]{2,}", "errorMessage" : "Should contain at least 2 characters"}
+            "landHolding": {
+                "pattern": "[0-9]{0,3}",
+                "errorMessage": "Should be between 1 to 999 acres"
             },
-            "patientSearch": {
-                "address": {
-                    "label": "Rural Ward",
-                    "placeholder": "Enter ward",
-                    "field": "address2"
-                }
+            "familyName": {
+                "pattern": "[a-zA-Z]{0,}",
+                "errorMessage": "Should contain characters"
+            },
+            "givenName": {
+                "pattern": "[a-zA-Z]{0,}",
+                "errorMessage": "Should contain characters"
+            },
+            "middleName": {
+                "pattern": "[a-zA-Z]{0,}",
+                "errorMessage": "Should contain characters"
+            },
+            "address1": {
+                "pattern": "[a-zA-Z0-9\\s]{2,}",
+                "errorMessage": "Should contain at least 2 characters"
+            }
+        },
+        "patientSearch": {
+            "customAttributes": {
+                "label": "Phone Number",
+                "placeholder": "Phone Number",
+                "fields": [
+                    "patientPhoneNumber"
+                ]
             }
         }
+    }
 }

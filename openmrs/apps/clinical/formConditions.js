@@ -24,5 +24,17 @@ Bahmni.ConceptSet.FormConditions.rules = {
                 disable: ["Posture"]
             }
         }
+    },
+    'Sponsorship Type' : function (formName, formFieldValues) {
+        var sponsorship = formFieldValues['Sponsorship Type'];
+        if (sponsorship === "Covered By Insurance") {
+            return {
+                show: ["Insurance Company Name"]
+            }
+        } else {
+            return {
+                hide: ["Insurance Company Name"]
+            }
+        }
     }
 };
