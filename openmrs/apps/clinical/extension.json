@@ -65,7 +65,7 @@
     },
     "label": "Active",
     "order": 1,
-    "requiredPrivilege": "app:clinical"
+    "requiredPrivilege": "app:mopdQueue"
   },
   "bahmniClinicalPatientsSearchActivePatientsSurgery": {
     "id": "bahmni.clinical.patients.search.activePatients",
@@ -78,7 +78,7 @@
     },
     "label": "Active",
     "order": 2,
-    "requiredPrivilege": "app:clinical"
+    "requiredPrivilege": "app:surgeryQueue"
   },
   "bahmniClinicalPatientsSearchOPD": {
     "id": "bahmni.clinical.patients.search.OPD",
@@ -91,7 +91,7 @@
     },
     "label": "OPD-1",
     "order": 3,
-    "requiredPrivilege": "app:clinical"
+    "requiredPrivilege": "app:gopdQueue"
   },
   "bahmniClinicalPatientsSearchDentistry": {
     "id": "bahmni.clinical.patients.search.Dentistry",
@@ -104,7 +104,7 @@
     },
     "label": "OPD-1",
     "order": 4,
-    "requiredPrivilege": "app:clinical"
+    "requiredPrivilege": "app:dentistry"
   },
   "bahmniClinicalPatientsSearchipd": {
     "id": "bahmni.clinical.patients.search.ipd",
@@ -117,7 +117,7 @@
     },
     "label": "OPD-1",
     "order": 5,
-    "requiredPrivilege": "app:clinical"
+    "requiredPrivilege": "app:ipdQueue"
   },
   "bahmniClinicalConceptSetGroupObservationsHistory": {
     "id": "bahmni.clinical.conceptSetGroup.observations.history",
